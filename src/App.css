@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root[data-theme="light"] {
+  --bg-body: #f8fafc;
+  --bg-carte: #ffffff;
+  --texte-principal: #0f172a;
+  --texte-secondaire: #475569;
+  --bordure: #e2e8f0;
+  --violet-primaire: #6366f1;
+  --violet-secondaire: #4f46e5;
+  --violet-transparent: rgba(99, 102, 241, 0.08);
+}
+
+:root[data-theme="dark"] {
+  --bg-body: #0b0f19;
+  --bg-carte: #151f32;
+  --texte-principal: #f8fafc;
+  --texte-secondaire: #94a3b8;
+  --bordure: #22314d;
+  --violet-primaire: #818cf8;
+  --violet-secondaire: #6366f1;
+  --violet-transparent: rgba(129, 140, 248, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--texte-principal);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Animation en arrière plan en douceur */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.blob-1 {
+  top: -100px;
+  right: -50px;
+  width: 400px;
+  height: 400px;
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.blob-2 {
+  top: 200px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: rgba(129, 140, 248, 0.1);
+}
+
+/* Responsivité simplifiée pour petits écrans */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 40px !important;
+  }
+}
