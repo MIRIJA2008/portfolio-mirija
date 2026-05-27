@@ -18,35 +18,61 @@ export default function App() {
   }, [theme]);
 
   const projets = [
+    // NOUVEAUX PROJETS EXPERTS
     {
-      titre: "Plateforme Participative Citoyenne",
-      tech: "ASP.NET Core MVC, EF Core, SQL Server, Bootstrap",
-      desc: "Développement d’une plateforme web permettant aux citoyens de proposer et suivre des initiatives locales.",
-      features: ["Authentification sécurisée", "Gestion des rôles", "CRUD complet", "Tableau de bord", "Statistiques", "Interface responsive"]
+      titre: "Flutter Agri-Price Architecture",
+      tech: "Flutter, Firebase, REST API, Riverpod",
+      desc: "Architecture d'une application de comparaison des prix agricoles en temps réel avec géolocalisation des marchés.",
+      features: ["Multiplateforme iOS/Android", "Base Firestore", "Google Maps API", "Gestion d'état avancée"]
     },
     {
-      titre: "Application d’Alerte de Danger Personnel",
+      titre: "Ecommerce Platform Development",
+      tech: "Next.js, Node.js, PostgreSQL, Stripe",
+      desc: "Conception complète d'une plateforme marchande incluant la gestion des paiements (Stripe/Mobile Money) et des flux de commandes.",
+      features: ["TypeScript", "Auth OAuth/JWT", "Redux Toolkit", "Hébergement Vercel/AWS"]
+    },
+    {
+      titre: "SafePal Web Interface (Web3)",
+      tech: "React 18, Vite, Tailwind CSS, Web3.js",
+      desc: "Interface décentralisée moderne permettant l'interaction avec la blockchain et la connexion de portefeuilles via WalletConnect.",
+      features: ["Vite Build", "Ethers.js", "Navigation React Router v6", "Sécurité LocalStorage"]
+    },
+    {
+      titre: "MediSystem Pro Setup & Debug",
+      tech: "Laravel, React, MySQL, Postman",
+      desc: "Système de gestion hospitalière optimisé : gestion des patients, rendez-vous et débogage de flux de données complexes.",
+      features: ["Eloquent ORM", "Auth Sanctum", "Logs Winston/Monolog", "Déploiement Nginx"]
+    },
+    // PROJETS PRÉCÉDENTS CONSERVÉS
+    {
+      titre: "Plateforme Participative Citoyenne",
+      tech: "ASP.NET Core MVC, EF Core, SQL Server",
+      desc: "Solution web permettant aux citoyens de proposer et suivre des initiatives locales via un tableau de bord dynamique.",
+      features: ["Authentification sécurisée", "Gestion des rôles", "CRUD complet", "Interface responsive"]
+    },
+    {
+      titre: "Alerte de Danger Personnel",
       tech: "Flutter, Firebase",
-      desc: "Application mobile permettant d’envoyer rapidement une alerte en situation de danger.",
-      features: ["Géolocalisation", "Envoi d’alertes", "Interface mobile moderne", "Notifications"]
+      desc: "Application mobile permettant d’envoyer rapidement une alerte avec géolocalisation en situation d'urgence.",
+      features: ["Géolocalisation", "Firebase Auth", "Push Notifications", "UI Moderne"]
     },
     {
       titre: "Application Météo Mobile",
-      tech: "React Native, API météo",
-      desc: "Création d’un application météo avec géolocalisation automatique.",
-      features: ["Affichage météo en temps réel", "Icônes météo dynamiques", "Géolocalisation automatique", "Fond dynamique"]
+      tech: "React Native, API OpenWeather",
+      desc: "Application météo avec détection automatique de la position et affichage dynamique du climat.",
+      features: ["Météo Temps Réel", "Icônes Dynamiques", "Géolocalisation", "Fonds changeants"]
     },
     {
-      titre: "Portail de Carrière en Ligne",
+      titre: "Portail de Carrière Public",
       tech: "ASP.NET Core MVC, SQL Server",
-      desc: "Développement d’un portail de recrutement destiné au secteur public.",
-      features: ["Gestion des offres", "Gestion des candidatures", "Interface admin", "Gestion des utilisateurs"]
+      desc: "Portail de recrutement destiné au secteur public pour la gestion centralisée des offres d'emploi.",
+      features: ["Gestion candidatures", "Interface Admin", "Filtres avancés", "Espace candidat"]
     },
     {
-      titre: "Projet Hackathon",
-      tech: "Angular, Node.js, NestJS, MongoDB",
-      desc: "Participation à un hackathon avec développement d’une solution web collaborative.",
-      features: ["API REST", "Interface dynamique", "Gestion des données", "Travail en équipe"]
+      titre: "Hackathon Collaborative Solution",
+      tech: "Angular, NestJS, MongoDB",
+      desc: "Outil collaboratif développé en temps record lors d'une compétition de code.",
+      features: ["API RESTful", "Temps réel", "Architecture NoSQL", "Travail d'équipe"]
     }
   ];
 
@@ -66,7 +92,6 @@ export default function App() {
 
       <div className="container">
         
-        {/* Header */}
         <header style={styles.header}>
           <div style={styles.logo}>MIRIJA<span style={{color: 'var(--violet-primaire)'}}>.GL</span></div>
           <button onClick={toggleTheme} style={styles.themeBtn}>
@@ -74,7 +99,6 @@ export default function App() {
           </button>
         </header>
 
-        {/* Hero Section */}
         <section style={styles.hero}>
           <div style={styles.heroText}>
             <span style={styles.badge}>Développeur Full Stack Junior | Mobile & Web</span>
@@ -82,11 +106,10 @@ export default function App() {
             <p style={styles.description}>
               Je suis un développeur passionné par les technologies web et mobiles. 
               Je conçois des applications modernes, performantes et intuitives. 
-              Motivé par la résolution de problèmes, l’apprentissage continu et la création de solutions numériques utiles.
+              Motivé par la résolution de problèmes et la création de solutions numériques utiles.
             </p>
             <div style={styles.btnGroup}>
               <a href="#projets" style={styles.btnPrimary}>Voir mes projets</a>
-              {/* LIEN CV MIS À JOUR */}
               <a href="https://canva.link/ikzvvoxfg6f6c70" target="_blank" rel="noreferrer" style={styles.btnSecondary}>
                 <FileText size={18}/> Télécharger mon CV
               </a>
@@ -107,7 +130,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* À Propos & Services */}
         <section style={styles.sectionGap}>
           <div style={styles.twoColumnGrid}>
             <div style={styles.carte}>
@@ -128,7 +150,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Compétences Techniques */}
         <section style={styles.sectionGap}>
           <h2 style={styles.sectionTitre}>Compétences Techniques</h2>
           <div style={styles.gridCompetences}>
@@ -167,9 +188,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* Projets */}
         <section id="projets" style={styles.sectionGap}>
-          <h2 style={styles.sectionTitre}>Mes Projets Réalisés</h2>
+          <h2 style={styles.sectionTitre}>Mes Projets Réalisés ({projets.length})</h2>
           <div style={styles.gridProjets}>
             {projets.map((p, index) => (
               <div key={index} style={styles.projetCarte}>
@@ -186,22 +206,20 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Section MIS À JOUR AVEC WHATSAPP */}
         <section id="contact" style={styles.sectionGap}>
           <div style={{...styles.carte, textAlign: 'center', padding: '40px 20px'}}>
             <h3 style={{fontSize: 24, fontWeight: 700, marginBottom: 10}}>Restons en contact !</h3>
             <div style={{display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap', marginTop: 20}}>
               <a href="mailto:mirija2008mrj@gmail.com" style={styles.contactLink}><Mail size={18}/> Email</a>
               <a href="tel:0340367737" style={styles.contactLink}><Phone size={18}/> Appeler</a>
-              <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" style={{...styles.contactLink, color: '#25D366'}}>
-                <MessageCircle size={18}/> WhatsApp
+              <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" style={{...styles.contactLink, borderColor: '#25D366'}}>
+                <MessageCircle size={18} color="#25D366"/> WhatsApp
               </a>
               <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" style={styles.contactLink}><Globe size={18}/> GitHub</a>
             </div>
           </div>
         </section>
 
-        {/* Footer */}
         <footer style={styles.footer}>
           <p style={{fontWeight: 500, fontSize: 16, color: 'var(--texte-principal)'}}>“Transformer des idées en solutions numériques innovantes.”</p>
           <p style={{marginTop: 10, color: 'var(--texte-secondaire)', fontSize: 14}}>© 2026 Mirija GL — Tous droits réservés.</p>
@@ -222,7 +240,7 @@ const styles = {
   nom: { fontSize: '56px', fontWeight: '800', letterSpacing: '-1px', background: 'linear-gradient(45deg, var(--violet-primaire), var(--violet-secondaire))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '15px' },
   description: { color: 'var(--texte-secondaire)', fontSize: '17px', lineHeight: '1.6', maxWidth: '600px', marginBottom: '30px' },
   btnGroup: { display: 'flex', gap: '15px', flexWrap: 'wrap' },
-  btnPrimary: { background: 'var(--violet-primaire)', color: '#fff', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', transition: '0.3s' },
+  btnPrimary: { background: 'var(--violet-primaire)', color: '#fff', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
   btnSecondary: { background: 'var(--bg-carte)', color: 'var(--texte-principal)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', border: '1px solid var(--bordure)', display: 'inline-flex', alignItems: 'center', gap: '8px', backdropFilter: 'blur(10px)' },
   btnOutline: { border: '1px solid var(--violet-primaire)', color: 'var(--violet-primaire)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
   avatarContainer: { flex: '1 1 250px', display: 'flex', justifyContent: 'center' },
