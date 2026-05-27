@@ -4,7 +4,7 @@ import {
   Server, FileText, ExternalLink, Briefcase, GraduationCap, 
   Layers, CheckCircle, Target, Award, Heart, Globe 
 } from 'lucide-react';
-import img from "../assets/img.JPG"; // ⚠️ important
+import img from "./assets/img.png";
 
 export default function App() {
   const [theme, setTheme] = useState('light');
@@ -91,8 +91,6 @@ export default function App() {
               <a href="#contact" style={styles.btnOutline}>Me contacter</a>
             </div>
           </div>
-          
-         import img from "../assets/img.JPG"; // ⚠️ important
 
 {/* Section Photo de Profil */}
 <div style={styles.avatarContainer}>
