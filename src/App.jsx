@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Sun, Moon, Mail, Phone, MapPin, Code, Smartphone, Database, 
   Server, FileText, ExternalLink, Briefcase, GraduationCap, 
-  Layers, CheckCircle, Target, Award, Heart, Globe 
+  Layers, CheckCircle, Target, Award, Heart, Globe, MessageCircle 
 } from 'lucide-react';
 
 export default function App() {
@@ -86,24 +86,26 @@ export default function App() {
             </p>
             <div style={styles.btnGroup}>
               <a href="#projets" style={styles.btnPrimary}>Voir mes projets</a>
-              <a href="#" style={styles.btnSecondary}><FileText size={18}/> Télécharger mon CV</a>
+              {/* LIEN CV MIS À JOUR */}
+              <a href="https://canva.link/ikzvvoxfg6f6c70" target="_blank" rel="noreferrer" style={styles.btnSecondary}>
+                <FileText size={18}/> Télécharger mon CV
+              </a>
               <a href="#contact" style={styles.btnOutline}>Me contacter</a>
             </div>
           </div>
 
-{/* Section Photo de Profil */}
-<div style={styles.avatarContainer}>
-  <div style={styles.avatarBorder}>
-    <div style={styles.avatarPlaceholder}>
-      <img
-        src="/img.png"
-        alt="Mirija GL"
-        style={styles.avatarImg}
-      />
-    </div>
-  </div>
-</div>
-</section>
+          <div style={styles.avatarContainer}>
+            <div style={styles.avatarBorder}>
+              <div style={styles.avatarPlaceholder}>
+                <img
+                  src="/img.png"
+                  alt="Mirija GL"
+                  style={styles.avatarImg}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* À Propos & Services */}
         <section style={styles.sectionGap}>
@@ -184,14 +186,17 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* Contact Section MIS À JOUR AVEC WHATSAPP */}
         <section id="contact" style={styles.sectionGap}>
           <div style={{...styles.carte, textAlign: 'center', padding: '40px 20px'}}>
             <h3 style={{fontSize: 24, fontWeight: 700, marginBottom: 10}}>Restons en contact !</h3>
-            <div style={{display: 'flex', justifyContent: 'center', gap: 20, flexWrap: 'wrap', marginTop: 20}}>
-              <a href="mailto:mirija2008mrj@gmail.com" style={styles.contactLink}><Mail size={18}/> mirija2008mrj@gmail.com</a>
-              <a href="tel:0340367737" style={styles.contactLink}><Phone size={18}/> 034 03 677 37</a>
-              <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" style={styles.contactLink}><Globe size={18}/> GitHub: MIRIJA2008</a>
+            <div style={{display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap', marginTop: 20}}>
+              <a href="mailto:mirija2008mrj@gmail.com" style={styles.contactLink}><Mail size={18}/> Email</a>
+              <a href="tel:0340367737" style={styles.contactLink}><Phone size={18}/> Appeler</a>
+              <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" style={{...styles.contactLink, color: '#25D366'}}>
+                <MessageCircle size={18}/> WhatsApp
+              </a>
+              <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" style={styles.contactLink}><Globe size={18}/> GitHub</a>
             </div>
           </div>
         </section>
@@ -210,39 +215,39 @@ export default function App() {
 const styles = {
   header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', marginBottom: '40px' },
   logo: { fontSize: '22px', fontWeight: 'bold', letterSpacing: '1px' },
-  themeBtn: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '10px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' },
+  themeBtn: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '10px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)' },
   hero: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '40px', flexWrap: 'wrap-reverse', margin: '40px 0' },
   heroText: { flex: '1 1 500px' },
   badge: { background: 'var(--violet-transparent)', color: 'var(--violet-primaire)', padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: '600', display: 'inline-block', marginBottom: '15px' },
   nom: { fontSize: '56px', fontWeight: '800', letterSpacing: '-1px', background: 'linear-gradient(45deg, var(--violet-primaire), var(--violet-secondaire))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '15px' },
   description: { color: 'var(--texte-secondaire)', fontSize: '17px', lineHeight: '1.6', maxWidth: '600px', marginBottom: '30px' },
   btnGroup: { display: 'flex', gap: '15px', flexWrap: 'wrap' },
-  btnPrimary: { background: 'var(--violet-primaire)', color: '#fff', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
-  btnSecondary: { background: 'var(--bg-carte)', color: 'var(--texte-principal)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', border: '1px solid var(--bordure)', display: 'inline-flex', alignItems: 'center', gap: '8px' },
+  btnPrimary: { background: 'var(--violet-primaire)', color: '#fff', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', transition: '0.3s' },
+  btnSecondary: { background: 'var(--bg-carte)', color: 'var(--texte-principal)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', border: '1px solid var(--bordure)', display: 'inline-flex', alignItems: 'center', gap: '8px', backdropFilter: 'blur(10px)' },
   btnOutline: { border: '1px solid var(--violet-primaire)', color: 'var(--violet-primaire)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
   avatarContainer: { flex: '1 1 250px', display: 'flex', justifyContent: 'center' },
   avatarBorder: { padding: '10px', borderRadius: '30px', background: 'linear-gradient(135deg, var(--violet-primaire), transparent)' },
-  avatarPlaceholder: { width: '220px', height: '220px', borderRadius: '22px', backgroundColor: 'var(--bg-carte)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid var(--bordure)', overflow: 'hidden' },
+  avatarPlaceholder: { width: '220px', height: '220px', borderRadius: '22px', backgroundColor: 'var(--bg-carte)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid var(--bordure)', overflow: 'hidden', backdropFilter: 'blur(10px)' },
   avatarImg: { width: '100%', height: '100%', objectFit: 'cover' },
   sectionGap: { marginTop: '70px' },
   sectionTitre: { fontSize: '26px', fontWeight: '700', marginBottom: '30px' },
   twoColumnGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '25px' },
-  carte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '18px' },
+  carte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '18px', backdropFilter: 'blur(12px)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' },
   carteTitre: { fontSize: '19px', fontWeight: '600', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' },
   carteTexte: { color: 'var(--texte-secondaire)', fontSize: '15px', lineHeight: '1.6' },
   servicesGrid: { display: 'flex', flexWrap: 'wrap', gap: '10px' },
-  serviceTag: { display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'var(--bg-body)', padding: '8px 14px', borderRadius: '8px', fontSize: '14px', color: 'var(--texte-principal)', border: '1px solid var(--bordure)' },
+  serviceTag: { display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'var(--violet-transparent)', padding: '8px 14px', borderRadius: '8px', fontSize: '14px', color: 'var(--texte-principal)', border: '1px solid var(--bordure)' },
   gridCompetences: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' },
   iconContainer: { background: 'var(--violet-transparent)', width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' },
   skillsList: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' },
   techIcon: { marginRight: '8px', fontSize: '16px' },
   gridProjets: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '25px' },
-  projetCarte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '20px' },
+  projetCarte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '20px', backdropFilter: 'blur(12px)', transition: '0.3s' },
   projetTech: { fontSize: '11px', fontWeight: '700', color: 'var(--violet-primaire)', textTransform: 'uppercase' },
   projetTitre: { fontSize: '20px', fontWeight: '600', margin: '10px 0' },
   projetDesc: { color: 'var(--texte-secondaire)', fontSize: '14px', lineHeight: '1.5' },
   featuresContainer: { display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '15px' },
   featureBadge: { background: 'var(--violet-transparent)', color: 'var(--violet-primaire)', padding: '4px 10px', borderRadius: '6px', fontSize: '12px' },
-  contactLink: { display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--texte-principal)', textDecoration: 'none', fontSize: '15px', background: 'var(--bg-body)', padding: '12px 20px', borderRadius: '10px', border: '1px solid var(--bordure)' },
+  contactLink: { display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--texte-principal)', textDecoration: 'none', fontSize: '15px', background: 'var(--bg-carte)', padding: '12px 20px', borderRadius: '10px', border: '1px solid var(--bordure)', backdropFilter: 'blur(10px)', transition: '0.3s' },
   footer: { marginTop: '100px', borderTop: '1px solid var(--bordure)', padding: '40px 0', textAlign: 'center' }
 };
