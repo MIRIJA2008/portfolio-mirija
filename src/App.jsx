@@ -4,7 +4,6 @@ import {
   Server, FileText, ExternalLink, Briefcase, GraduationCap, 
   Layers, CheckCircle, Target, Award, Heart, Globe 
 } from 'lucide-react';
-import img from "./assets/img.png";
 
 export default function App() {
   const [theme, setTheme] = useState('light');
@@ -97,7 +96,7 @@ export default function App() {
   <div style={styles.avatarBorder}>
     <div style={styles.avatarPlaceholder}>
       <img
-        src={img}
+        src="/img.png"
         alt="Mirija GL"
         style={styles.avatarImg}
       />
