@@ -4,6 +4,7 @@ import {
   Server, FileText, ExternalLink, Briefcase, GraduationCap, 
   Layers, CheckCircle, Target, Award, Heart, Globe 
 } from 'lucide-react';
+import img from "../assets/img.JPG"; // ⚠️ important
 
 export default function App() {
   const [theme, setTheme] = useState('light');
@@ -91,24 +92,21 @@ export default function App() {
             </div>
           </div>
           
-          {/* Section Photo de Profil */}
-          <div style={styles.avatarContainer}>
-            <div style={styles.avatarBorder}>
-              <div style={styles.avatarPlaceholder}>
-                <img 
-                  src="mirija.JPG" 
-                  alt="Mirija GL" 
-                  style={styles.avatarImg}
-                  onError={(e) => {
-                    // Si l'image ne charge pas, on affiche une icône par défaut
-                    e.target.style.display = 'none';
-                    e.target.parentNode.innerHTML = '<div style="color:var(--violet-primaire)">📷</div>';
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+         import img from "../assets/img.JPG"; // ⚠️ important
+
+{/* Section Photo de Profil */}
+<div style={styles.avatarContainer}>
+  <div style={styles.avatarBorder}>
+    <div style={styles.avatarPlaceholder}>
+      <img
+        src={img}
+        alt="Mirija GL"
+        style={styles.avatarImg}
+      />
+    </div>
+  </div>
+</div>
+</section>
 
         {/* À Propos & Services */}
         <section style={styles.sectionGap}>
