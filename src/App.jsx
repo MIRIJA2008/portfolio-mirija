@@ -27,9 +27,9 @@ export default function App() {
     },
     {
       titre: "Ecommerce Platform Development",
-      tech: "Next.js, Node.js, PostgreSQL, Stripe",
+      tech: "Next.js, Node.js, PostgreSQL",
       desc: "Conception complète d'une plateforme marchande incluant la gestion des paiements (Stripe/Mobile Money) et des flux de commandes.",
-      features: ["TypeScript", "Auth OAuth/JWT", "Redux Toolkit", "Hébergement Vercel/AWS"]
+      features: ["TypeScript", "Auth OAuth/JWT", "Redux Toolkit"]
     },
     {
       titre: "SafePal Web Interface (Web3)",
@@ -41,21 +41,10 @@ export default function App() {
       titre: "MediSystem Pro Setup & Debug",
       tech: "Laravel, React, MySQL, Postman",
       desc: "Système de gestion hospitalière optimisé : gestion des patients, rendez-vous et débogage de flux de données complexes.",
-      features: ["Eloquent ORM", "Auth Sanctum", "Logs Winston/Monolog", "Déploiement Nginx"]
+      features: []
     },
     // PROJETS PRÉCÉDENTS CONSERVÉS
-    {
-      titre: "Plateforme Participative Citoyenne",
-      tech: "ASP.NET Core MVC, EF Core, SQL Server",
-      desc: "Solution web permettant aux citoyens de proposer et suivre des initiatives locales via un tableau de bord dynamique.",
-      features: ["Authentification sécurisée", "Gestion des rôles", "CRUD complet", "Interface responsive"]
-    },
-    {
-      titre: "Alerte de Danger Personnel",
-      tech: "Flutter, Firebase",
-      desc: "Application mobile permettant d’envoyer rapidement une alerte avec géolocalisation en situation d'urgence.",
-      features: ["Géolocalisation", "Firebase Auth", "Push Notifications", "UI Moderne"]
-    },
+   
     {
       titre: "Application Météo Mobile",
       tech: "React Native, API OpenWeather",
