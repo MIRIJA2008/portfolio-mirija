@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Sun, Moon, Mail, Phone, MapPin, Code, Smartphone, Database, 
-  Server, FileText, ExternalLink, Briefcase, GraduationCap, 
-  Layers, CheckCircle, Target, Award, Heart, Globe, MessageCircle 
+import {
+  Sun, Moon, Mail, Phone, MapPin, Code, Smartphone, Database,
+  Server, FileText, ExternalLink, Briefcase, GraduationCap,
+  Layers, CheckCircle, Target, Award, Heart, Globe, MessageCircle
 } from 'lucide-react';
+import './App.css';
 
 export default function App() {
-  const [theme, setTheme] = useState('light');
+  // Thème par défaut : 'dark' met en valeur le thème Orbital x Lumen
+  // (fond indigo profond + accents orange/rose). Le bouton bascule
+  // toujours vers une version claire de la même palette.
+  const [theme, setTheme] = useState('dark');
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
@@ -18,7 +22,6 @@ export default function App() {
   }, [theme]);
 
   const projets = [
-    // NOUVEAUX PROJETS EXPERTS
     {
       titre: "Flutter Agri-Price Architecture",
       tech: "Flutter, Firebase, REST API, Riverpod",
@@ -43,8 +46,6 @@ export default function App() {
       desc: "Système de gestion hospitalière optimisé : gestion des patients, rendez-vous et débogage de flux de données complexes.",
       features: []
     },
-    // PROJETS PRÉCÉDENTS CONSERVÉS
-   
     {
       titre: "Application Météo Mobile",
       tech: "React Native, API OpenWeather",
@@ -66,9 +67,9 @@ export default function App() {
   ];
 
   const services = [
-    "Création de sites web modernes", "Développement d’applications mobiles", 
-    "Création d’API REST", "Intégration frontend/backend", 
-    "Gestion de bases de données", "Interfaces responsive", 
+    "Création de sites web modernes", "Développement d'applications mobiles",
+    "Création d'API REST", "Intégration frontend/backend",
+    "Gestion de bases de données", "Interfaces responsive",
     "Authentification sécurisée", "CRUD complet"
   ];
 
@@ -77,12 +78,13 @@ export default function App() {
       <div className="background-animation">
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>
+        <div className="starfield"></div>
       </div>
 
       <div className="container">
-        
+
         <header style={styles.header}>
-          <div style={styles.logo}>MIRIJA<span style={{color: 'var(--violet-primaire)'}}>.GL</span></div>
+          <div style={styles.logo}>MIRIJA<span style={{ color: 'var(--violet-primaire)' }}>.GL</span></div>
           <button onClick={toggleTheme} style={styles.themeBtn}>
             {theme === 'light' ? <Moon size={20} color="var(--violet-primaire)" /> : <Sun size={20} color="var(--violet-secondaire)" />}
           </button>
@@ -93,27 +95,32 @@ export default function App() {
             <span style={styles.badge}>Développeur Full Stack Junior | Mobile & Web</span>
             <h1 style={styles.nom}>Mirija GL</h1>
             <p style={styles.description}>
-              Je suis un développeur passionné par les technologies web et mobiles. 
-              Je conçois des applications modernes, performantes et intuitives. 
+              Je suis un développeur passionné par les technologies web et mobiles.
+              Je conçois des applications modernes, performantes et intuitives.
               Motivé par la résolution de problèmes et la création de solutions numériques utiles.
             </p>
             <div style={styles.btnGroup}>
               <a href="#projets" style={styles.btnPrimary}>Voir mes projets</a>
               <a href="https://canva.link/ikzvvoxfg6f6c70" target="_blank" rel="noreferrer" style={styles.btnSecondary}>
-                <FileText size={18}/> Télécharger mon CV
+                <FileText size={18} /> Télécharger mon CV
               </a>
               <a href="#contact" style={styles.btnOutline}>Me contacter</a>
             </div>
           </div>
 
           <div style={styles.avatarContainer}>
-            <div style={styles.avatarBorder}>
-              <div style={styles.avatarPlaceholder}>
-                <img
-                  src="/img.png"
-                  alt="Mirija GL"
-                  style={styles.avatarImg}
-                />
+            <div className="orbit-decoration">
+              <span className="ring ring-1"></span>
+              <span className="ring ring-2"></span>
+              <span className="ring ring-3"></span>
+              <div style={styles.avatarBorder}>
+                <div style={styles.avatarPlaceholder}>
+                  <img
+                    src="/img.png"
+                    alt="Mirija GL"
+                    style={styles.avatarImg}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -121,15 +128,15 @@ export default function App() {
 
         <section style={styles.sectionGap}>
           <div style={styles.twoColumnGrid}>
-            <div style={styles.carte}>
-              <h3 style={styles.carteTitre}><Heart size={20} color="var(--violet-primaire)" style={{marginRight:8}}/> À propos de moi</h3>
+            <div className="hover-card" style={styles.carte}>
+              <h3 style={styles.carteTitre}><Heart size={20} color="var(--violet-primaire)" style={{ marginRight: 8 }} /> À propos de moi</h3>
               <p style={styles.carteTexte}>
-                Je suis étudiant en informatique et développeur full stack junior basé à Madagascar. 
+                Je suis étudiant en informatique et développeur full stack junior basé à Madagascar.
                 Je possède des compétences solides en développement frontend, backend et en gestion de bases de données.
               </p>
             </div>
-            <div style={styles.carte}>
-              <h3 style={styles.carteTitre}><Layers size={20} color="var(--violet-primaire)" style={{marginRight:8}}/> Services offerts</h3>
+            <div className="hover-card" style={styles.carte}>
+              <h3 style={styles.carteTitre}><Layers size={20} color="var(--violet-primaire)" style={{ marginRight: 8 }} /> Services offerts</h3>
               <div style={styles.servicesGrid}>
                 {services.map((s, i) => (
                   <span key={i} style={styles.serviceTag}><CheckCircle size={14} color="var(--violet-primaire)" /> {s}</span>
@@ -142,8 +149,8 @@ export default function App() {
         <section style={styles.sectionGap}>
           <h2 style={styles.sectionTitre}>Compétences Techniques</h2>
           <div style={styles.gridCompetences}>
-            <div style={styles.carte}>
-              <div style={styles.iconContainer}><Code color="var(--violet-primaire)"/></div>
+            <div className="hover-card" style={styles.carte}>
+              <div style={styles.iconContainer}><Code color="var(--violet-primaire)" /></div>
               <h4 style={styles.carteTitre}>Frontend</h4>
               <ul style={styles.skillsList}>
                 <li><span style={styles.techIcon}>🌐</span> HTML5 / CSS3</li>
@@ -154,8 +161,8 @@ export default function App() {
               </ul>
             </div>
 
-            <div style={styles.carte}>
-              <div style={styles.iconContainer}><Server color="var(--violet-primaire)"/></div>
+            <div className="hover-card" style={styles.carte}>
+              <div style={styles.iconContainer}><Server color="var(--violet-primaire)" /></div>
               <h4 style={styles.carteTitre}>Backend</h4>
               <ul style={styles.skillsList}>
                 <li><span style={styles.techIcon}>🍃</span> Spring Boot</li>
@@ -165,8 +172,8 @@ export default function App() {
               </ul>
             </div>
 
-            <div style={styles.carte}>
-              <div style={styles.iconContainer}><Database color="var(--violet-primaire)"/></div>
+            <div className="hover-card" style={styles.carte}>
+              <div style={styles.iconContainer}><Database color="var(--violet-primaire)" /></div>
               <h4 style={styles.carteTitre}>Bases de données</h4>
               <ul style={styles.skillsList}>
                 <li><span style={styles.techIcon}>🐬</span> MySQL</li>
@@ -181,7 +188,7 @@ export default function App() {
           <h2 style={styles.sectionTitre}>Mes Projets Réalisés ({projets.length})</h2>
           <div style={styles.gridProjets}>
             {projets.map((p, index) => (
-              <div key={index} style={styles.projetCarte}>
+              <div key={index} className="hover-card" style={styles.projetCarte}>
                 <span style={styles.projetTech}>{p.tech}</span>
                 <h4 style={styles.projetTitre}>{p.titre}</h4>
                 <p style={styles.projetDesc}>{p.desc}</p>
@@ -196,22 +203,22 @@ export default function App() {
         </section>
 
         <section id="contact" style={styles.sectionGap}>
-          <div style={{...styles.carte, textAlign: 'center', padding: '40px 20px'}}>
-            <h3 style={{fontSize: 24, fontWeight: 700, marginBottom: 10}}>Restons en contact !</h3>
-            <div style={{display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap', marginTop: 20}}>
-              <a href="mailto:mirija2008mrj@gmail.com" style={styles.contactLink}><Mail size={18}/> Email</a>
-              <a href="tel:0340367737" style={styles.contactLink}><Phone size={18}/> Appeler</a>
-              <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" style={{...styles.contactLink, borderColor: '#25D366'}}>
-                <MessageCircle size={18} color="#25D366"/> WhatsApp
+          <div style={{ ...styles.carte, textAlign: 'center', padding: '40px 20px' }}>
+            <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 10 }}>Restons en contact !</h3>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap', marginTop: 20 }}>
+              <a href="mailto:mirija2008mrj@gmail.com" style={styles.contactLink}><Mail size={18} /> Email</a>
+              <a href="tel:0340367737" style={styles.contactLink}><Phone size={18} /> Appeler</a>
+              <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" style={{ ...styles.contactLink, borderColor: '#25D366' }}>
+                <MessageCircle size={18} color="#25D366" /> WhatsApp
               </a>
-              <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" style={styles.contactLink}><Globe size={18}/> GitHub</a>
+              <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" style={styles.contactLink}><Globe size={18} /> GitHub</a>
             </div>
           </div>
         </section>
 
         <footer style={styles.footer}>
-          <p style={{fontWeight: 500, fontSize: 16, color: 'var(--texte-principal)'}}>“Transformer des idées en solutions numériques innovantes.”</p>
-          <p style={{marginTop: 10, color: 'var(--texte-secondaire)', fontSize: 14}}>© 2026 Mirija GL — Tous droits réservés.</p>
+          <p style={{ fontWeight: 500, fontSize: 16, color: 'var(--texte-principal)' }}>"Transformer des idées en solutions numériques innovantes."</p>
+          <p style={{ marginTop: 10, color: 'var(--texte-secondaire)', fontSize: 14 }}>© 2026 Mirija GL — Tous droits réservés.</p>
         </footer>
 
       </div>
@@ -229,17 +236,17 @@ const styles = {
   nom: { fontSize: '56px', fontWeight: '800', letterSpacing: '-1px', background: 'linear-gradient(45deg, var(--violet-primaire), var(--violet-secondaire))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '15px' },
   description: { color: 'var(--texte-secondaire)', fontSize: '17px', lineHeight: '1.6', maxWidth: '600px', marginBottom: '30px' },
   btnGroup: { display: 'flex', gap: '15px', flexWrap: 'wrap' },
-  btnPrimary: { background: 'var(--violet-primaire)', color: '#fff', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
+  btnPrimary: { background: 'var(--violet-primaire)', color: '#1D1A39', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '700', fontSize: '15px' },
   btnSecondary: { background: 'var(--bg-carte)', color: 'var(--texte-principal)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', border: '1px solid var(--bordure)', display: 'inline-flex', alignItems: 'center', gap: '8px', backdropFilter: 'blur(10px)' },
   btnOutline: { border: '1px solid var(--violet-primaire)', color: 'var(--violet-primaire)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
   avatarContainer: { flex: '1 1 250px', display: 'flex', justifyContent: 'center' },
-  avatarBorder: { padding: '10px', borderRadius: '30px', background: 'linear-gradient(135deg, var(--violet-primaire), transparent)' },
+  avatarBorder: { position: 'relative', zIndex: 2, padding: '10px', borderRadius: '30px', background: 'linear-gradient(135deg, var(--violet-primaire), transparent)' },
   avatarPlaceholder: { width: '220px', height: '220px', borderRadius: '22px', backgroundColor: 'var(--bg-carte)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid var(--bordure)', overflow: 'hidden', backdropFilter: 'blur(10px)' },
   avatarImg: { width: '100%', height: '100%', objectFit: 'cover' },
   sectionGap: { marginTop: '70px' },
   sectionTitre: { fontSize: '26px', fontWeight: '700', marginBottom: '30px' },
   twoColumnGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '25px' },
-  carte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '18px', backdropFilter: 'blur(12px)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' },
+  carte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '18px', backdropFilter: 'blur(12px)', boxShadow: '0 10px 30px rgba(0,0,0,0.15)' },
   carteTitre: { fontSize: '19px', fontWeight: '600', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' },
   carteTexte: { color: 'var(--texte-secondaire)', fontSize: '15px', lineHeight: '1.6' },
   servicesGrid: { display: 'flex', flexWrap: 'wrap', gap: '10px' },
@@ -249,12 +256,12 @@ const styles = {
   skillsList: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' },
   techIcon: { marginRight: '8px', fontSize: '16px' },
   gridProjets: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '25px' },
-  projetCarte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '20px', backdropFilter: 'blur(12px)', transition: '0.3s' },
+  projetCarte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '20px', backdropFilter: 'blur(12px)' },
   projetTech: { fontSize: '11px', fontWeight: '700', color: 'var(--violet-primaire)', textTransform: 'uppercase' },
   projetTitre: { fontSize: '20px', fontWeight: '600', margin: '10px 0' },
   projetDesc: { color: 'var(--texte-secondaire)', fontSize: '14px', lineHeight: '1.5' },
   featuresContainer: { display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '15px' },
   featureBadge: { background: 'var(--violet-transparent)', color: 'var(--violet-primaire)', padding: '4px 10px', borderRadius: '6px', fontSize: '12px' },
-  contactLink: { display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--texte-principal)', textDecoration: 'none', fontSize: '15px', background: 'var(--bg-carte)', padding: '12px 20px', borderRadius: '10px', border: '1px solid var(--bordure)', backdropFilter: 'blur(10px)', transition: '0.3s' },
+  contactLink: { display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--texte-principal)', textDecoration: 'none', fontSize: '15px', background: 'var(--bg-carte)', padding: '12px 20px', borderRadius: '10px', border: '1px solid var(--bordure)', backdropFilter: 'blur(10px)' },
   footer: { marginTop: '100px', borderTop: '1px solid var(--bordure)', padding: '40px 0', textAlign: 'center' }
 };
