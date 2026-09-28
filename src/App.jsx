@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Phone, Code, Database, Server, ExternalLink, Layers,
   CheckCircle, Globe, MessageCircle, MapPin, ArrowUpRight, Mail
@@ -6,6 +6,7 @@ import {
 import './App.css';
 
 export default function App() {
+  const [zoom, setZoom] = useState(false);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
@@ -64,8 +65,36 @@ export default function App() {
       items: ["MySQL", "MongoDB", "SQL Server"] }
   ];
 
+  /* langages en pilules animées (comme les boutons) */
+  const stack = [
+    "HTML / CSS", "JavaScript", "TypeScript", "Angular", "Flutter",
+    "React Native", "Spring Boot", "ASP.NET", "Node.js", "NestJS",
+    "MySQL", "MongoDB", "SQL Server", "Firebase"
+  ];
+
   return (
     <>
+      {/* ═══ ESPACE : ÉTOILES + FUSÉES ═══ */}
+      <div className="space-bg">
+        <div className="stars stars-1"></div>
+        <div className="stars stars-2"></div>
+        <div className="shoot s1"></div>
+        <div className="shoot s2"></div>
+        <span className="rocket r1">🚀</span>
+        <span className="rocket r2">🚀</span>
+        <span className="rocket r3">🚀</span>
+        <span className="rocket r4">🚀</span>
+      </div>
+
+      {/* ═══ AVATAR EN GRAND (au clic) ═══ */}
+      {zoom && (
+        <div className="avatar-overlay" onClick={() => setZoom(false)}>
+          <img src="/img.png" alt="Mirija GL" />
+          <p>Cliquez pour fermer</p>
+        </div>
+      )}
+
+      {/* ═══ NAV + ROND CLIQUABLE ═══ */}
       <nav className="nav">
         <div className="logo">Mirija<span>.GL</span></div>
         <div className="nav-links">
@@ -73,10 +102,11 @@ export default function App() {
           <a href="#competences">Compétences</a>
           <a href="#projets">Projets</a>
           <a href="#contact">Contact</a>
-          <img className="avatar-top" src="/mrj.jpeg" alt="Mirija GL" />
+          <img className="avatar-top" src="/img.png" alt="Mirija GL" title="Cliquer pour agrandir" onClick={() => setZoom(true)} />
         </div>
       </nav>
 
+      {/* ═══ HERO ═══ */}
       <header className="hero">
         <div className="hero-content">
           <div className="badge-disponible">
@@ -108,8 +138,14 @@ export default function App() {
             <p>Trusted by forward-thinking brands<br />worldwide</p>
           </div>
         </div>
+
+        {/* cadre photo à droite (l'ancienne photo de fond) */}
+        <div className="hero-photo">
+          <img src="/mrj.jpeg" alt="Mirija GL" />
+        </div>
       </header>
 
+      {/* ═══ MARQUEE ═══ */}
       <div className="marquee">
         <div className="marquee-track">
           <span>Flutter</span><span className="outline">React Native</span><span>Node.js</span>
@@ -121,6 +157,7 @@ export default function App() {
         </div>
       </div>
 
+      {/* ═══ À PROPOS + SERVICES ═══ */}
       <section id="apropos" className="section reveal" ref={addRef}>
         <div className="section-head">
           <h2>À propos <em>&amp; services</em></h2>
@@ -146,11 +183,19 @@ export default function App() {
         </div>
       </section>
 
+      {/* ═══ COMPÉTENCES + PILULES ANIMÉES ═══ */}
       <section id="competences" className="section reveal" ref={addRef}>
         <div className="section-head">
           <h2>Compétences <em>techniques</em></h2>
-          <p className="comment">// ma stack</p>
+          <p className="comment">// mes langages</p>
         </div>
+
+        <div className="stack-pills">
+          {stack.map((t, i) => (
+            <span key={i} className="stack-pill" style={{ animationDelay: (i * 0.12) + 's' }}>{t}</span>
+          ))}
+        </div>
+
         <div className="skills-grid">
           {skills.map((s, i) => (
             <div key={i} className="card skill-card">
@@ -164,6 +209,7 @@ export default function App() {
         </div>
       </section>
 
+      {/* ═══ PROJETS ═══ */}
       <section id="projets" className="section reveal" ref={addRef}>
         <div className="section-head">
           <h2>Projets <em>réalisés</em> <span className="count">({projets.length})</span></h2>
@@ -186,6 +232,7 @@ export default function App() {
         </div>
       </section>
 
+      {/* ═══ CONTACT ═══ */}
       <section id="contact" className="section contact-section reveal" ref={addRef}>
         <h2 className="contact-big">Travaillons<br /><em>ensemble</em></h2>
         <a href="mailto:mirija2008mrj@gmail.com" className="contact-mail">
