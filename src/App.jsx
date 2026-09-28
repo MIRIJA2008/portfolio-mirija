@@ -1,69 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
-  Sun, Moon, Mail, Phone, MapPin, Code, Smartphone, Database,
-  Server, FileText, ExternalLink, Briefcase, GraduationCap,
-  Layers, CheckCircle, Target, Award, Heart, Globe, MessageCircle
+  Phone, Code, Database, Server, ExternalLink, Layers,
+  CheckCircle, Globe, MessageCircle, MapPin, ArrowUpRight, Mail
 } from 'lucide-react';
 import './App.css';
 
 export default function App() {
-  // Thème par défaut : 'dark' met en valeur le thème Orbital x Lumen
-  // (fond indigo profond + accents orange/rose). Le bouton bascule
-  // toujours vers une version claire de la même palette.
-  const [theme, setTheme] = useState('dark');
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(nextTheme);
-  };
+  const sectionRefs = useRef([]);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    sectionRefs.current.forEach(el => el && obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  const addRef = el => { if (el && !sectionRefs.current.includes(el)) sectionRefs.current.push(el); };
 
   const projets = [
-    {
-      titre: "Fanorona Godot",
-      tech: "Godot 4, GDScript",
+    { titre: "Fanorona Godot", tech: "Godot 4 · GDScript",
       desc: "Implémentation complète du jeu traditionnel malgache Fanorona (plateau 9x5, Fanoron-Tsivy).",
-      features: ["Captures par approche/retrait", "Captures en chaîne", "Mouvements Paika", "Indicateur de tour et vainqueur"],
-      git: "https://github.com/MIRIJA2008/fanorona-godot"
-    },
-    {
-      titre: "Weather App Advance",
-      tech: "Flutter, Provider, Geolocator",
+      features: ["Captures par approche/retrait", "Captures en chaîne", "Mouvements Paika", "Tour et vainqueur"],
+      git: "https://github.com/MIRIJA2008/fanorona-godot" },
+    { titre: "Weather App Advance", tech: "Flutter · Provider · Geolocator",
       desc: "Application météo mobile avec détection automatique de la position de l'utilisateur.",
-      features: ["Géolocalisation", "Gestion d'état Provider", "Préférences locales", "Multiplateforme"],
-      git: "https://github.com/MIRIJA2008/weather-app-advance"
-    },
-    {
-      titre: "Tantsaha Market",
-      tech: "Flutter, Riverpod, flutter_map, fl_chart",
-      desc: "Application mobile Flutter pour le marché agricole malgache, avec carte interactive et graphiques.",
-      features: ["Carte interactive", "Graphiques", "Gestion d'état Riverpod", "Multiplateforme"],
-      git: "https://github.com/MIRIJA2008/tantsaha-market"
-    },
-    {
-      titre: "SkyFlow Weather",
-      tech: "React Native, Expo",
+      features: ["Géolocalisation", "Provider", "Préférences locales", "Multiplateforme"],
+      git: "https://github.com/MIRIJA2008/weather-app-advance" },
+    { titre: "Tantsaha Market", tech: "Flutter · Riverpod · flutter_map · fl_chart",
+      desc: "Application mobile Flutter pour le marché agricole malgache, carte interactive et graphiques.",
+      features: ["Carte interactive", "Graphiques", "Riverpod", "Multiplateforme"],
+      git: "https://github.com/MIRIJA2008/tantsaha-market" },
+    { titre: "SkyFlow Weather", tech: "React Native · Expo",
       desc: "Application météo mobile avec géolocalisation, cartes météo et prévisions.",
       features: ["Expo Location", "Cartes météo", "Prévisions", "Icônes Lucide"],
-      git: "https://github.com/MIRIJA2008/skyflow-weather"
-    },
-    {
-      titre: "SafePal",
-      tech: "React, Vite, Recharts, Framer Motion",
+      git: "https://github.com/MIRIJA2008/skyflow-weather" },
+    { titre: "SafePal", tech: "React · Vite · Recharts · Framer Motion",
       desc: "Interface de tableau de bord de portefeuille avec liste d'actifs et graphiques.",
-      features: ["Portefeuille", "Liste d'actifs", "Graphiques Recharts", "Animations Framer Motion"],
-      git: "https://github.com/MIRIJA2008/safepal"
-    },
-    {
-      titre: "PayMarket",
-      tech: "React, TypeScript, Vite, Tailwind CSS",
+      features: ["Portefeuille", "Liste d'actifs", "Recharts", "Framer Motion"],
+      git: "https://github.com/MIRIJA2008/safepal" },
+    { titre: "PayMarket", tech: "React · TypeScript · Vite · Tailwind CSS",
       desc: "Application web de paiement mobile pour les commerçants informels à Madagascar.",
       features: ["Dashboard marchand", "Panneau admin", "QR codes", "PWA"],
-      git: "https://github.com/MIRIJA2008/paymarket-web"
-    }
+      git: "https://github.com/MIRIJA2008/paymarket-web" }
   ];
 
   const services = [
@@ -73,198 +55,158 @@ export default function App() {
     "Authentification sécurisée", "CRUD complet"
   ];
 
+  const skills = [
+    { icon: <Code size={22} />, titre: "Frontend",
+      items: ["HTML5 / CSS3", "JavaScript / TypeScript", "Angular", "Flutter", "React Native"] },
+    { icon: <Server size={22} />, titre: "Backend",
+      items: ["Spring Boot", "ASP.NET Core MVC", "Node.js", "NestJS"] },
+    { icon: <Database size={22} />, titre: "Bases de données",
+      items: ["MySQL", "MongoDB", "SQL Server"] }
+  ];
+
   return (
     <>
-      <div className="background-animation">
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
-        <div className="starfield"></div>
+      <nav className="nav">
+        <div className="logo">Mirija<span>.GL</span></div>
+        <div className="nav-links">
+          <a href="#apropos">À propos</a>
+          <a href="#competences">Compétences</a>
+          <a href="#projets">Projets</a>
+          <a href="#contact">Contact</a>
+          <img className="avatar-top" src="/mrj.jpeg" alt="Mirija GL" />
+        </div>
+      </nav>
+
+      <header className="hero">
+        <div className="hero-content">
+          <div className="badge-disponible">
+            <span className="pulse-dot"></span>
+            Disponible pour projets freelance · Madagascar
+          </div>
+          <h1 className="hero-name">
+            MIRIJA
+            <span className="gradient-name">GL</span>
+          </h1>
+          <p className="hero-role">Développeur Full Stack — Web &amp; Mobile</p>
+          <p className="hero-desc">
+            Je conçois des applications web et mobiles modernes, performantes et
+            intuitives. Du pixel au déploiement, je transforme des idées en
+            solutions numériques utiles.
+          </p>
+          <div className="hero-cta">
+            <a href="#projets" className="btn-primary">View Work <ArrowUpRight size={16} /></a>
+            <a href="https://canva.link/ikzvvoxfg6f70c70" target="_blank" rel="noreferrer" className="btn-secondary">Mon CV ↗</a>
+          </div>
+          <div className="trusted">
+            <div className="faces">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" />
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="" />
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="" />
+              <span className="plus">+12</span>
+            </div>
+            <p>Trusted by forward-thinking brands<br />worldwide</p>
+          </div>
+        </div>
+      </header>
+
+      <div className="marquee">
+        <div className="marquee-track">
+          <span>Flutter</span><span className="outline">React Native</span><span>Node.js</span>
+          <span className="outline">Spring Boot</span><span>Angular</span><span className="outline">NestJS</span>
+          <span>MySQL</span><span className="outline">MongoDB</span>
+          <span>Flutter</span><span className="outline">React Native</span><span>Node.js</span>
+          <span className="outline">Spring Boot</span><span>Angular</span><span className="outline">NestJS</span>
+          <span>MySQL</span><span className="outline">MongoDB</span>
+        </div>
       </div>
 
-      <div className="container">
-
-        <header style={styles.header}>
-          <div style={styles.logo}>MIRIJA<span style={{ color: 'var(--violet-primaire)' }}>.GL</span></div>
-          <button onClick={toggleTheme} style={styles.themeBtn}>
-            {theme === 'light' ? <Moon size={20} color="var(--violet-primaire)" /> : <Sun size={20} color="var(--violet-secondaire)" />}
-          </button>
-        </header>
-
-        <section style={styles.hero}>
-          <div style={styles.heroText}>
-            <span style={styles.badge}>Développeur Full Stack Junior | Mobile & Web</span>
-            <h1 style={styles.nom}>Mirija GL</h1>
-            <p style={styles.description}>
-              Je suis un développeur passionné par les technologies web et mobiles.
-              Je conçois des applications modernes, performantes et intuitives.
-              Motivé par la résolution de problèmes et la création de solutions numériques utiles.
+      <section id="apropos" className="section reveal" ref={addRef}>
+        <div className="section-head">
+          <h2>À propos <em>&amp; services</em></h2>
+          <p className="comment">// qui suis-je</p>
+        </div>
+        <div className="two-col">
+          <div className="card">
+            <h3><Layers size={19} /> Mon histoire</h3>
+            <p>
+              Étudiant en informatique et développeur full stack junior basé à
+              Madagascar. Compétences solides en frontend, backend et gestion de
+              bases de données. Motivé par la résolution de problèmes concrets —
+              du marché agricole malgache aux jeux traditionnels comme le Fanorona.
             </p>
-            <div style={styles.btnGroup}>
-              <a href="#projets" style={styles.btnPrimary}>Voir mes projets</a>
-              <a href="https://canva.link/ikzvvoxfg6f6c70" target="_blank" rel="noreferrer" style={styles.btnSecondary}>
-                <FileText size={18} /> Télécharger mon CV
+            <p className="location"><MapPin size={15} /> Antananarivo, Madagascar</p>
+          </div>
+          <div className="card">
+            <h3><CheckCircle size={19} /> Services offerts</h3>
+            <div className="tags">
+              {services.map((s, i) => <span key={i} className="tag">{s}</span>)}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="competences" className="section reveal" ref={addRef}>
+        <div className="section-head">
+          <h2>Compétences <em>techniques</em></h2>
+          <p className="comment">// ma stack</p>
+        </div>
+        <div className="skills-grid">
+          {skills.map((s, i) => (
+            <div key={i} className="card skill-card">
+              <div className="skill-icon">{s.icon}</div>
+              <h4>{s.titre}</h4>
+              <ul>
+                {s.items.map((it, j) => <li key={j}>{it}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="projets" className="section reveal" ref={addRef}>
+        <div className="section-head">
+          <h2>Projets <em>réalisés</em> <span className="count">({projets.length})</span></h2>
+          <p className="comment">// selected works</p>
+        </div>
+        <div className="projects-grid">
+          {projets.map((p, i) => (
+            <article key={i} className="project-card">
+              <span className="project-tech">{p.tech}</span>
+              <h4>{p.titre}</h4>
+              <p>{p.desc}</p>
+              <div className="features">
+                {p.features.map((f, fi) => <span key={fi} className="feature">{f}</span>)}
+              </div>
+              <a href={p.git} target="_blank" rel="noreferrer" className="github-link">
+                <Globe size={14} /> Voir sur GitHub <ExternalLink size={12} />
               </a>
-              <a href="#contact" style={styles.btnOutline}>Me contacter</a>
-            </div>
-          </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-          <div style={styles.avatarContainer}>
-            <div className="orbit-decoration">
-              <span className="ring ring-1"></span>
-              <span className="ring ring-2"></span>
-              <span className="ring ring-3"></span>
-              <div style={styles.avatarBorder}>
-                <div style={styles.avatarPlaceholder}>
-                  <img
-                    src="/img.png"
-                    alt="Mirija GL"
-                    style={styles.avatarImg}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <section id="contact" className="section contact-section reveal" ref={addRef}>
+        <h2 className="contact-big">Travaillons<br /><em>ensemble</em></h2>
+        <a href="mailto:mirija2008mrj@gmail.com" className="contact-mail">
+          <Mail size={20} /> mirija2008mrj@gmail.com
+        </a>
+        <div className="contact-actions">
+          <a href="mailto:mirija2008mrj@gmail.com" className="btn-primary">Book a Call ↗</a>
+          <a href="tel:0340367737" className="contact-link"><Phone size={17} /> 034 03 677 37</a>
+          <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" className="contact-link wa">
+            <MessageCircle size={17} /> WhatsApp
+          </a>
+          <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" className="contact-link">
+            <Globe size={17} /> GitHub
+          </a>
+        </div>
+      </section>
 
-        <section style={styles.sectionGap}>
-          <div style={styles.twoColumnGrid}>
-            <div className="hover-card" style={styles.carte}>
-              <h3 style={styles.carteTitre}><Heart size={20} color="var(--violet-primaire)" style={{ marginRight: 8 }} /> À propos de moi</h3>
-              <p style={styles.carteTexte}>
-                Je suis étudiant en informatique et développeur full stack junior basé à Madagascar.
-                Je possède des compétences solides en développement frontend, backend et en gestion de bases de données.
-              </p>
-            </div>
-            <div className="hover-card" style={styles.carte}>
-              <h3 style={styles.carteTitre}><Layers size={20} color="var(--violet-primaire)" style={{ marginRight: 8 }} /> Services offerts</h3>
-              <div style={styles.servicesGrid}>
-                {services.map((s, i) => (
-                  <span key={i} style={styles.serviceTag}><CheckCircle size={14} color="var(--violet-primaire)" /> {s}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section style={styles.sectionGap}>
-          <h2 style={styles.sectionTitre}>Compétences Techniques</h2>
-          <div style={styles.gridCompetences}>
-            <div className="hover-card" style={styles.carte}>
-              <div style={styles.iconContainer}><Code color="var(--violet-primaire)" /></div>
-              <h4 style={styles.carteTitre}>Frontend</h4>
-              <ul style={styles.skillsList}>
-                <li><span style={styles.techIcon}>🌐</span> HTML5 / CSS3</li>
-                <li><span style={styles.techIcon}>📜</span> JavaScript / TypeScript</li>
-                <li><span style={styles.techIcon}>🅰️</span> Angular</li>
-                <li><span style={styles.techIcon}>🐦</span> Flutter</li>
-                <li><span style={styles.techIcon}>⚛️</span> React Native</li>
-              </ul>
-            </div>
-
-            <div className="hover-card" style={styles.carte}>
-              <div style={styles.iconContainer}><Server color="var(--violet-primaire)" /></div>
-              <h4 style={styles.carteTitre}>Backend</h4>
-              <ul style={styles.skillsList}>
-                <li><span style={styles.techIcon}>🍃</span> Spring Boot</li>
-                <li><span style={styles.techIcon}>⚙️</span> ASP.NET Core MVC</li>
-                <li><span style={styles.techIcon}>🟢</span> Node.js</li>
-                <li><span style={styles.techIcon}>🐱</span> NestJS</li>
-              </ul>
-            </div>
-
-            <div className="hover-card" style={styles.carte}>
-              <div style={styles.iconContainer}><Database color="var(--violet-primaire)" /></div>
-              <h4 style={styles.carteTitre}>Bases de données</h4>
-              <ul style={styles.skillsList}>
-                <li><span style={styles.techIcon}>🐬</span> MySQL</li>
-                <li><span style={styles.techIcon}>🍃</span> MongoDB</li>
-                <li><span style={styles.techIcon}>🛢️</span> SQL Server</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="projets" style={styles.sectionGap}>
-          <h2 style={styles.sectionTitre}>Mes Projets Réalisés ({projets.length})</h2>
-          <div style={styles.gridProjets}>
-            {projets.map((p, index) => (
-              <div key={index} className="hover-card" style={styles.projetCarte}>
-                <span style={styles.projetTech}>{p.tech}</span>
-                <h4 style={styles.projetTitre}>{p.titre}</h4>
-                <p style={styles.projetDesc}>{p.desc}</p>
-                <div style={styles.featuresContainer}>
-                  {p.features.map((f, fi) => (
-                    <span key={fi} style={styles.featureBadge}>{f}</span>
-                  ))}
-                </div>
-                <a href={p.git} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '15px', fontSize: '13px', fontWeight: '600', color: 'var(--violet-primaire)', textDecoration: 'none' }}>
-                  <Globe size={14} /> Voir sur GitHub
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="contact" style={styles.sectionGap}>
-          <div style={{ ...styles.carte, textAlign: 'center', padding: '40px 20px' }}>
-            <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 10 }}>Restons en contact !</h3>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap', marginTop: 20 }}>
-              <a href="mailto:mirija2008mrj@gmail.com" style={styles.contactLink}><Mail size={18} /> Email</a>
-              <a href="tel:0340367737" style={styles.contactLink}><Phone size={18} /> Appeler</a>
-              <a href="https://wa.me/261331717177" target="_blank" rel="noreferrer" style={{ ...styles.contactLink, borderColor: '#25D366' }}>
-                <MessageCircle size={18} color="#25D366" /> WhatsApp
-              </a>
-              <a href="https://github.com/MIRIJA2008" target="_blank" rel="noreferrer" style={styles.contactLink}><Globe size={18} /> GitHub</a>
-            </div>
-          </div>
-        </section>
-
-        <footer style={styles.footer}>
-          <p style={{ fontWeight: 500, fontSize: 16, color: 'var(--texte-principal)' }}>"Transformer des idées en solutions numériques innovantes."</p>
-          <p style={{ marginTop: 10, color: 'var(--texte-secondaire)', fontSize: 14 }}>© 2026 Mirija GL — Tous droits réservés.</p>
-        </footer>
-
-      </div>
+      <footer className="footer">
+        <p className="quote">"Transformer des idées en solutions numériques innovantes."</p>
+        <p className="copy">© 2026 Mirija GL — Développé avec React + Vite</p>
+      </footer>
     </>
   );
 }
-
-const styles = {
-  header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', marginBottom: '40px' },
-  logo: { fontSize: '22px', fontWeight: 'bold', letterSpacing: '1px' },
-  themeBtn: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '10px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)' },
-  hero: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '40px', flexWrap: 'wrap-reverse', margin: '40px 0' },
-  heroText: { flex: '1 1 500px' },
-  badge: { background: 'var(--violet-transparent)', color: 'var(--violet-primaire)', padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: '600', display: 'inline-block', marginBottom: '15px' },
-  nom: { fontSize: '56px', fontWeight: '800', letterSpacing: '-1px', background: 'linear-gradient(45deg, var(--violet-primaire), var(--violet-secondaire))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '15px' },
-  description: { color: 'var(--texte-secondaire)', fontSize: '17px', lineHeight: '1.6', maxWidth: '600px', marginBottom: '30px' },
-  btnGroup: { display: 'flex', gap: '15px', flexWrap: 'wrap' },
-  btnPrimary: { background: 'var(--violet-primaire)', color: '#1D1A39', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '700', fontSize: '15px' },
-  btnSecondary: { background: 'var(--bg-carte)', color: 'var(--texte-principal)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px', border: '1px solid var(--bordure)', display: 'inline-flex', alignItems: 'center', gap: '8px', backdropFilter: 'blur(10px)' },
-  btnOutline: { border: '1px solid var(--violet-primaire)', color: 'var(--violet-primaire)', padding: '12px 24px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', fontSize: '15px' },
-  avatarContainer: { flex: '1 1 250px', display: 'flex', justifyContent: 'center' },
-  avatarBorder: { position: 'relative', zIndex: 2, padding: '10px', borderRadius: '30px', background: 'linear-gradient(135deg, var(--violet-primaire), transparent)' },
-  avatarPlaceholder: { width: '220px', height: '220px', borderRadius: '22px', backgroundColor: 'var(--bg-carte)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid var(--bordure)', overflow: 'hidden', backdropFilter: 'blur(10px)' },
-  avatarImg: { width: '100%', height: '100%', objectFit: 'cover' },
-  sectionGap: { marginTop: '70px' },
-  sectionTitre: { fontSize: '26px', fontWeight: '700', marginBottom: '30px' },
-  twoColumnGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '25px' },
-  carte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '18px', backdropFilter: 'blur(12px)', boxShadow: '0 10px 30px rgba(0,0,0,0.15)' },
-  carteTitre: { fontSize: '19px', fontWeight: '600', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' },
-  carteTexte: { color: 'var(--texte-secondaire)', fontSize: '15px', lineHeight: '1.6' },
-  servicesGrid: { display: 'flex', flexWrap: 'wrap', gap: '10px' },
-  serviceTag: { display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'var(--violet-transparent)', padding: '8px 14px', borderRadius: '8px', fontSize: '14px', color: 'var(--texte-principal)', border: '1px solid var(--bordure)' },
-  gridCompetences: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' },
-  iconContainer: { background: 'var(--violet-transparent)', width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' },
-  skillsList: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' },
-  techIcon: { marginRight: '8px', fontSize: '16px' },
-  gridProjets: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '25px' },
-  projetCarte: { background: 'var(--bg-carte)', border: '1px solid var(--bordure)', padding: '30px', borderRadius: '20px', backdropFilter: 'blur(12px)' },
-  projetTech: { fontSize: '11px', fontWeight: '700', color: 'var(--violet-primaire)', textTransform: 'uppercase' },
-  projetTitre: { fontSize: '20px', fontWeight: '600', margin: '10px 0' },
-  projetDesc: { color: 'var(--texte-secondaire)', fontSize: '14px', lineHeight: '1.5' },
-  featuresContainer: { display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '15px' },
-  featureBadge: { background: 'var(--violet-transparent)', color: 'var(--violet-primaire)', padding: '4px 10px', borderRadius: '6px', fontSize: '12px' },
-  contactLink: { display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--texte-principal)', textDecoration: 'none', fontSize: '15px', background: 'var(--bg-carte)', padding: '12px 20px', borderRadius: '10px', border: '1px solid var(--bordure)', backdropFilter: 'blur(10px)' },
-  footer: { marginTop: '100px', borderTop: '1px solid var(--bordure)', padding: '40px 0', textAlign: 'center' }
-};
