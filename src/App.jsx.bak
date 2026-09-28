@@ -23,53 +23,46 @@ export default function App() {
 
   const projets = [
     {
-      titre: "Fanorona Godot",
-      tech: "Godot 4, GDScript",
-      desc: "Implémentation complète du jeu traditionnel malgache Fanorona (plateau 9x5, Fanoron-Tsivy).",
-      features: ["Captures par approche/retrait", "Captures en chaîne", "Mouvements Paika", "Indicateur de tour et vainqueur"],
-      git: "https://github.com/MIRIJA2008/fanorona-godot"
+      titre: "Flutter Agri-Price Architecture",
+      tech: "Flutter, Firebase, REST API, Riverpod",
+      desc: "Architecture d'une application de comparaison des prix agricoles en temps réel avec géolocalisation des marchés.",
+      features: ["Multiplateforme iOS/Android", "Base Firestore", "Google Maps API", "Gestion d'état avancée"]
     },
     {
-      titre: "Weather App Advance",
-      tech: "Flutter, Provider, Geolocator",
-      desc: "Application météo mobile avec détection automatique de la position de l'utilisateur.",
-      features: ["Géolocalisation", "Gestion d'état Provider", "Préférences locales", "Multiplateforme"],
-      git: "https://github.com/MIRIJA2008/weather-app-advance"
+      titre: "Ecommerce Platform Development",
+      tech: "Next.js, Node.js, PostgreSQL",
+      desc: "Conception complète d'une plateforme marchande incluant la gestion des paiements (Stripe/Mobile Money) et des flux de commandes.",
+      features: ["TypeScript", "Auth OAuth/JWT", "Redux Toolkit"]
     },
     {
-      titre: "Tantsaha Market",
-      tech: "Flutter, Riverpod, flutter_map, fl_chart",
-      desc: "Application mobile Flutter pour le marché agricole malgache, avec carte interactive et graphiques.",
-      features: ["Carte interactive", "Graphiques", "Gestion d'état Riverpod", "Multiplateforme"],
-      git: "https://github.com/MIRIJA2008/tantsaha-market"
+      titre: "SafePal Web Interface (Web3)",
+      tech: "React 18, Vite, Tailwind CSS, Web3.js",
+      desc: "Interface décentralisée moderne permettant l'interaction avec la blockchain et la connexion de portefeuilles via WalletConnect.",
+      features: ["Vite Build", "Ethers.js", "Navigation React Router v6", "Sécurité LocalStorage"]
     },
     {
-      titre: "Hospital Management",
-      tech: "Gestion hospitalière",
-      desc: "Système de gestion hospitalière : suivi des patients et des rendez-vous.",
-      features: [],
-      git: "https://github.com/MIRIJA2008/hospital-management"
+      titre: "MediSystem Pro Setup & Debug",
+      tech: "Laravel, React, MySQL, Postman",
+      desc: "Système de gestion hospitalière optimisé : gestion des patients, rendez-vous et débogage de flux de données complexes.",
+      features: []
     },
     {
-      titre: "SkyFlow Weather",
-      tech: "React Native, Expo",
-      desc: "Application météo mobile avec géolocalisation, cartes météo et prévisions.",
-      features: ["Expo Location", "Cartes météo", "Prévisions", "Icônes Lucide"],
-      git: "https://github.com/MIRIJA2008/skyflow-weather"
+      titre: "Application Météo Mobile",
+      tech: "React Native, API OpenWeather",
+      desc: "Application météo avec détection automatique de la position et affichage dynamique du climat.",
+      features: ["Météo Temps Réel", "Icônes Dynamiques", "Géolocalisation", "Fonds changeants"]
     },
     {
-      titre: "SafePal",
-      tech: "React, Vite, Recharts, Framer Motion",
-      desc: "Interface de tableau de bord de portefeuille avec liste d'actifs et graphiques.",
-      features: ["Portefeuille", "Liste d'actifs", "Graphiques Recharts", "Animations Framer Motion"],
-      git: "https://github.com/MIRIJA2008/safepal"
+      titre: "Portail de Carrière Public",
+      tech: "ASP.NET Core MVC, SQL Server",
+      desc: "Portail de recrutement destiné au secteur public pour la gestion centralisée des offres d'emploi.",
+      features: ["Gestion candidatures", "Interface Admin", "Filtres avancés", "Espace candidat"]
     },
     {
-      titre: "PayMarket",
-      tech: "React, TypeScript, Vite, Tailwind CSS",
-      desc: "Application web de paiement mobile pour les commerçants informels à Madagascar.",
-      features: ["Dashboard marchand", "Panneau admin", "QR codes", "PWA"],
-      git: "https://github.com/MIRIJA2008/paymarket-web"
+      titre: "Hackathon Collaborative Solution",
+      tech: "Angular, NestJS, MongoDB",
+      desc: "Outil collaboratif développé en temps record lors d'une compétition de code.",
+      features: ["API RESTful", "Temps réel", "Architecture NoSQL", "Travail d'équipe"]
     }
   ];
 
@@ -204,9 +197,6 @@ export default function App() {
                     <span key={fi} style={styles.featureBadge}>{f}</span>
                   ))}
                 </div>
-                <a href={p.git} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '15px', fontSize: '13px', fontWeight: '600', color: 'var(--violet-primaire)', textDecoration: 'none' }}>
-                  <Globe size={14} /> Voir sur GitHub
-                </a>
               </div>
             ))}
           </div>
