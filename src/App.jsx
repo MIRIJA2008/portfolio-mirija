@@ -44,13 +44,6 @@ export default function App() {
       git: "https://github.com/MIRIJA2008/tantsaha-market"
     },
     {
-      titre: "Hospital Management",
-      tech: "Gestion hospitalière",
-      desc: "Système de gestion hospitalière : suivi des patients et des rendez-vous.",
-      features: [],
-      git: "https://github.com/MIRIJA2008/hospital-management"
-    },
-    {
       titre: "SkyFlow Weather",
       tech: "React Native, Expo",
       desc: "Application météo mobile avec géolocalisation, cartes météo et prévisions.",
