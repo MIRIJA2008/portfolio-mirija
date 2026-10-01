@@ -7,6 +7,11 @@ import './App.css';
 
 export default function App() {
   const [zoom, setZoom] = useState(false);
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
@@ -95,14 +100,15 @@ export default function App() {
       )}
 
       {/* ═══ NAV + ROND CLIQUABLE ═══ */}
-      <nav className="nav">
-        <div className="logo">Mirija<span>.GL</span></div>
+            <nav className="nav">
+        <a href="#" className="nav-pill logo-pill">Mirija<span>.GL</span></a>
         <div className="nav-links">
-          <a href="#apropos">À propos</a>
-          <a href="#competences">Compétences</a>
-          <a href="#projets">Projets</a>
-          <a href="#contact">Contact</a>
-          <img className="avatar-top" src="/img.png" alt="Mirija GL" title="Cliquer pour agrandir" onClick={() => setZoom(true)} />
+          <a className="nav-pill" href="#apropos">À propos</a>
+          <a className="nav-pill" href="#competences">Compétences</a>
+          <a className="nav-pill" href="#projets">Projets</a>
+          <a className="nav-pill" href="#contact">Contact</a>
+          <button className="nav-pill nav-icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Mode"><span key={theme} className="rocket-toggle">🚀</span></button>
+          <img className="nav-pill nav-avatar" src="/img.png" alt="Mirija GL" title="Agrandir" onClick={() => setZoom(true)} />
         </div>
       </nav>
 
@@ -127,19 +133,9 @@ export default function App() {
             <a href="#projets" className="btn-primary">View Work <ArrowUpRight size={16} /></a>
             <a href="https://canva.link/ikzvvoxfg6f70c70" target="_blank" rel="noreferrer" className="btn-secondary">Mon CV ↗</a>
           </div>
-          <div className="trusted">
-            <div className="faces">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="" />
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" />
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="" />
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="" />
-              <span className="plus">+12</span>
-            </div>
-            <p>Trusted by forward-thinking brands<br />worldwide</p>
-          </div>
         </div>
 
-        {/* cadre photo à droite (l'ancienne photo de fond) */}
+        {/* cadre photo a droite */}
         <div className="hero-photo">
           <img src="/mrj.jpeg" alt="Mirija GL" />
         </div>
