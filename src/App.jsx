@@ -145,15 +145,25 @@ export default function App() {
         </div>
       </header>
 
-      {/* ═══ MARQUEE ═══ */}
+            {/* ═══ MARQUEE PILULES ═══ */}
       <div className="marquee">
         <div className="marquee-track">
-          <span>Flutter</span><span className="outline">React Native</span><span>Node.js</span>
-          <span className="outline">Spring Boot</span><span>Angular</span><span className="outline">NestJS</span>
-          <span>MySQL</span><span className="outline">MongoDB</span>
-          <span>Flutter</span><span className="outline">React Native</span><span>Node.js</span>
-          <span className="outline">Spring Boot</span><span>Angular</span><span className="outline">NestJS</span>
-          <span>MySQL</span><span className="outline">MongoDB</span>
+          <span className="mq-pill">Flutter</span>
+          <span className="mq-pill">React Native</span>
+          <span className="mq-pill">Node.js</span>
+          <span className="mq-pill">Spring Boot</span>
+          <span className="mq-pill">Angular</span>
+          <span className="mq-pill">NestJS</span>
+          <span className="mq-pill">MySQL</span>
+          <span className="mq-pill">MongoDB</span>
+          <span className="mq-pill">Flutter</span>
+          <span className="mq-pill">React Native</span>
+          <span className="mq-pill">Node.js</span>
+          <span className="mq-pill">Spring Boot</span>
+          <span className="mq-pill">Angular</span>
+          <span className="mq-pill">NestJS</span>
+          <span className="mq-pill">MySQL</span>
+          <span className="mq-pill">MongoDB</span>
         </div>
       </div>
 
