@@ -131,7 +131,7 @@ export default function App() {
           </p>
           <div className="hero-cta">
             <a href="#projets" className="btn-primary">View Work <ArrowUpRight size={16} /></a>
-            <a href="https://canva.link/ikzvvoxfg6f70c70" target="_blank" rel="noreferrer" className="btn-secondary">Mon CV ↗</a>
+            <a href="/CV_MI_Rija.pdf" target="_blank" rel="noreferrer" className="btn-secondary">Mon CV ↗</a>
           </div>
         </div>
 
