@@ -258,7 +258,7 @@ export default function App() {
 
       <footer className="footer">
         <p className="quote">"Transformer des idées en solutions numériques innovantes."</p>
-        <p className="copy">© 2026 Mirija GL — Développé avec React + Vite</p>
+        <p className="copy">© 2026 Mirija GL</p>
       </footer>
     </>
   );
